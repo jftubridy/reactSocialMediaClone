@@ -20,54 +20,119 @@ if (module.hot) {
   });
 }
 
-class PersonRow extends React.component {
+class Home extends React.Component {
   render() {
-    const.category = this.props.category;
-    return(
+    const category = this.props.category;
+    return (
       <tr>
-        <th colSpan="2">
-        </th>
+        <th colSpan="2">{category}</th>
       </tr>
     );
   }
 }
 
-class PersonPost extends ReactComponent {
+class Noticications extends React.Component {
   render() {
-    const name = person.name;
-    const post = this.props.post;
+    category = this.props.category;
+    return (
+      <tr>
+        <th colSpan="2">{category}</th>
+      </tr>
+    );
   }
 }
 
-class PostTable extends React.Component {
-  render () {
+class Messages extends React.Component {
+  render() {
+    const category = this.props.category;
+    return (
+      <tr>
+        <th colSpan="2">{category}</th>
+      </tr>
+    );
+  }
+}
+
+class SearchInput extends React.Component {
+  render() {
+    return(
+      <form>
+        <input type="text" placeholder="Search...." />
+      </form>
+    );
+  }
+}
+
+class Tweet extends React.Component {
+  render() {
+    const category = this.props.category;
+    return (
+      <tr>
+        <th colSpan="2">{category}</th>
+      </tr>
+    );
+  }
+}
+
+class TopRow extends React.Component {
+  render() {
     const rows = [];
     let lastCategory = null;
 
-    this.props.post.forEach((post) => {
-      if (post.category !== lastCategory) {
+    this.props.topBox.forEach((topBox) => {
+      if (topBox.category !== lastCategory) {
         rows.push(
-          <PersonRow
-            category={post.category}
-            key={post.category} />
+          <Home
+            category={home.category}
+            key={home.name} />
+        );
+        rows.push(
+          <Noticications
+            notifications={notifications}
+            key={notifications.name} />
+        );
+        rows.push(
+          <Messages
+            messages={messages}
+            key={messages.name} />
+        );
+        rows.push(
+          <SearchInput
+            searchInput={searchInput}
+            key={searchInput.name} />
+        );
+        rows.push(
+          <Tweet
+            tweet={tweet}
+            key={tweet.name}  />
+        );
+        )
+        return (
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>{rows}</tbody>
+          </table>
         );
       }
-      rows.push (
-        <PersonPost
-          post={post}
-          key={post.name} />
-      );
-      lastCategory = post.category;
-    });
+    })
+  }
+}
+
+class Background extends React.Component {
+  render() {
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Post</th>
-          </tr>
-        </thead>
-      </table>
-    );
+      <div>
+        <TopRow />
+        // <Home />
+        // <Notifications />
+        // <Messages />
+        // <SearchInput />
+        // <Tweet />
+      </div>
+    )
   }
 }
