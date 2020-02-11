@@ -106,7 +106,7 @@ class TopRow extends React.Component {
             tweet={tweet}
             key={tweet.name}  />
         );
-        )
+        
         return (
           <table>
             <thead>
